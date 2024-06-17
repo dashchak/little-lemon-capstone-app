@@ -1,9 +1,9 @@
 import SwiftUI
 import CoreData
 
-struct DishesView: View {
+struct FoodMenuList: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @ObservedObject var viewModel: DishesViewModel
+    @ObservedObject var viewModel: FoodMenuListModel
 
     var body: some View {
         VStack {
@@ -12,11 +12,12 @@ struct DishesView: View {
                     predicate: viewModel.filterPredicate,
                     sortDescriptors: viewModel.buildSortDescriptors()) {
                         (dishes: [Dish]) in
-                        List {
-                            ForEach(dishes, id:\.self) {
-                                DishView($0)
+                        List(dishes) { dish in
+                            NavigationLink(destination: FoodItemDetailsView(dish: dish)) {
+                                FoodItemView(dish)
                             }
                         }
+                        .listStyle(.plain)
                     }
             }
             .scrollContentBackground(.hidden)
@@ -27,12 +28,9 @@ struct DishesView: View {
     }
 }
 
-extension DishesView {
+struct FoodMenuList_Previews: PreviewProvider {
+    static var previews: some View {
+        FoodMenuList(viewModel: FoodMenuListModel())
+            .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+    }
 }
-
-//struct DishesView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DishesView()
-//            .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
-//    }
-//}

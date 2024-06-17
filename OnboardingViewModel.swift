@@ -9,39 +9,38 @@ import SwiftUI
 import Combine
 
 class OnboardingViewModel: ObservableObject {
-    @Published var name: String = "" {
-        didSet { validateForm() }
-    }
-    @Published var lastName: String = "" {
-        didSet { validateForm() }
-    }
-    @Published var email: String = "" {
-        didSet { validateEmail(email) }
-    }
-    @Published var isEmailValid: Bool = true
-    @Published var showError: Bool = false
-    @Published var isFormValid: Bool = false
+    @Published var isFormValid = false
+    @Published var showRegistrationError: Bool = false
+    
+    @Published var name: String = ""
+    @Published var lastName: String = ""
+    @Published var email: String = ""
 
-    private var cancellables = Set<AnyCancellable>()
 
-    private func validateEmail(_ email: String) {
+    init () {
+        setubBindings()
+    }
+
+    private func setubBindings() {
+        Publishers.CombineLatest3($name, $lastName, $email)
+            .map { [unowned self] name, lastName, email in
+                !name.isEmpty && !lastName.isEmpty && isValid(email)
+            }
+            .assign(to: &$isFormValid)
+    }
+
+    private func isValid(_ email: String) -> Bool {
         let emailRegEx = #"^[A-Z0-9a-z._%+-]+@[A-Z0-9a-z.-]+\.[A-Z]{2,64}$"#
         let emailPredicate = NSPredicate(format: "SELF MATCHES[c] %@", emailRegEx)
-        isEmailValid = emailPredicate.evaluate(with: email)
-        validateForm()
+        return emailPredicate.evaluate(with: email)
     }
 
-    private func validateForm() {
-        isFormValid = !name.isEmpty && !lastName.isEmpty && isEmailValid
-    }
-
-    func registerUser() -> Bool {
+    func registerUser() {
         if isFormValid {
-            showError = false
-            return true
+            showRegistrationError = false
+            UserDefaultsService.shared.isLoggedIn = true
         } else {
-            showError = true
-            return false
+            showRegistrationError = true
         }
     }
 }

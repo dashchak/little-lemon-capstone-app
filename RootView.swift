@@ -11,24 +11,15 @@ import SwiftUI
 
 struct RootView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @State private var isLoggedIn: Bool = false
+    @ObservedObject var userDefaultsService = UserDefaultsService.shared
 
     var body: some View {
         Group {
-            if isLoggedIn {
+            if userDefaultsService.isLoggedIn {
                 MainView()
             } else {
-                OnboardingView(onRegisterSuccess: {
-                    isLoggedIn = true
-                })
+                OnboardingView()
             }
         }
-        .onAppear {
-            checkLoginStatus()
-        }
-    }
-
-    private func checkLoginStatus() {
-        isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
     }
 }

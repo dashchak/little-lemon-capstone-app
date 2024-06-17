@@ -4,7 +4,7 @@ import Combine
 
 
 @MainActor
-class DishesViewModel: ObservableObject {
+class FoodMenuListModel: ObservableObject {
     @Published var searchText: String = "" { didSet { updateFetchResults() } }
     @Published var selectedCategories: [Category] = [] { didSet { updateFetchResults() } }
     @Published var filterPredicate = NSPredicate(value: true)
@@ -34,7 +34,7 @@ class DishesViewModel: ObservableObject {
     }
 }
 
-private extension DishesViewModel {
+private extension FoodMenuListModel {
 
     func updateFetchResults() {
         self.filterPredicate = buildPredicate()

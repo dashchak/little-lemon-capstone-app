@@ -12,7 +12,7 @@ struct MainView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @StateObject private var categoriesViewModel = CategoriesViewModel()
-    @StateObject private var dishesViewModel = DishesViewModel()
+    @StateObject private var dishesViewModel = FoodMenuListModel()
     @State private var searchText: String = ""
 
     var body: some View {
@@ -28,7 +28,7 @@ struct MainView: View {
 
                 SectionTitleView(title: "ORDER FOR DELIVERY!")
                 CategoriesView(viewModel: categoriesViewModel)
-                DishesView(viewModel: dishesViewModel)
+                FoodMenuList(viewModel: dishesViewModel)
             }
             .onChange(of: searchText) { oldValue, newValue in
                 dishesViewModel.searchText = newValue
@@ -42,10 +42,7 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        let session = UserSession()
-        session.isLoggedIn = true
         return MainView()
             .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
-            .environmentObject(session)
     }
 }

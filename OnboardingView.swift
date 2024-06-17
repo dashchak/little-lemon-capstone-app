@@ -8,7 +8,6 @@ import SwiftUI
 
 struct OnboardingView: View {
     @StateObject private var viewModel = OnboardingViewModel()
-    var onRegisterSuccess: () -> Void
 
     var body: some View {
         NavigationStack {
@@ -35,24 +34,16 @@ struct OnboardingView: View {
                     .disableAutocorrection(true)
                     .padding()
 
-                    if !viewModel.isEmailValid {
-                        Text("Please enter a valid email")
-                            .foregroundColor(.red)
-                            .padding(.bottom)
-                    }
-
-                    if viewModel.showError {
+                    if viewModel.showRegistrationError {
                         Text("Please fill in all fields correctly")
                             .foregroundColor(.red)
                             .padding(.bottom)
                     }
 
                     Button("Register") {
-                        if viewModel.registerUser() {
-                            UserDefaults.standard.set(true, forKey: "isLoggedIn")
-                            onRegisterSuccess()
-                        }
+                        viewModel.registerUser()
                     }
+                    .disabled(!viewModel.isFormValid)
                     .buttonStyle(ButtonStyleYellowColorWide())
 
                     Spacer()
@@ -60,5 +51,12 @@ struct OnboardingView: View {
             }
         }
         .navigationBarBackButtonHidden()
+    }
+}
+
+struct OnboardingView_Previews: PreviewProvider {
+    static var previews: some View {
+        return OnboardingView()
+            .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
     }
 }

@@ -6,7 +6,7 @@
 import SwiftUI
 
 
-struct DishView: View {
+struct FoodItemView: View {
     @ObservedObject private var dish: Dish
     init(_ dish: Dish) {
         self.dish = dish
@@ -28,6 +28,7 @@ struct DishView: View {
                     .foregroundColor(.primaryColor1)
                     .monospaced()
             }
+            Spacer()
             AsyncImage(url: URL(string: dish.image ?? "")) { image in
                 image
                     .resizable()
@@ -47,18 +48,8 @@ struct DishView: View {
 struct DishView_Previews: PreviewProvider {
     static let context = PersistenceController.shared.container.viewContext
     static var previews: some View {
-        DishView(oneDish())
+        FoodItemView(PersistenceController.mockedDish())
             .environment(\.managedObjectContext, context)
-
-    }
-    static func oneDish() -> Dish {
-        let dish = Dish(context: context)
-        dish.title = "Greek Salad"
-        dish.price = "10.0"
-        dish.category = "starters"
-        dish.image = "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/greekSalad.jpg?raw=true"
-        dish.info = "The famous greek salad of crispy lettuce, peppers, olives, our Chicago."
-        return dish
     }
 }
 

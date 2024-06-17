@@ -29,3 +29,15 @@ struct PersistenceController {
         container.viewContext.automaticallyMergesChangesFromParent = true
     }
 }
+
+extension PersistenceController {
+    static func mockedDish() -> Dish {
+        let dish = Dish(context: shared.container.viewContext)
+        dish.title = "Greek Salad"
+        dish.price = "10.0"
+        dish.category = "starters"
+        dish.image = "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/greekSalad.jpg?raw=true"
+        dish.info = "The famous greek salad of crispy lettuce, peppers, olives, our Chicago."
+        return dish
+    }
+}

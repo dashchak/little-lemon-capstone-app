@@ -9,7 +9,6 @@ import SwiftUI
 
 
 struct Header: View {
-    @EnvironmentObject private var userSession: UserSession
     var allowProfileNavigation: Bool = true
 
     var body: some View {
@@ -18,8 +17,8 @@ struct Header: View {
                 LogoImageView()
                 HStack {
                     Spacer()
-                    if userSession.isLoggedIn {
-                        ProfileImageButton(destination: 
+                    if UserDefaultsService.shared.isLoggedIn {
+                        ProfileImageButton(destination:
                                             allowProfileNavigation ? EmptyView() : nil)
                     }
                 }
@@ -33,7 +32,6 @@ struct Header: View {
 struct Header_Previews: PreviewProvider {
     static var previews: some View {
         return Header(allowProfileNavigation: true)
-            .environmentObject(UserSession())
             .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
 
     }
