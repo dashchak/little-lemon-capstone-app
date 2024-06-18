@@ -18,8 +18,7 @@ struct Header: View {
                 HStack {
                     Spacer()
                     if UserDefaultsService.shared.isLoggedIn {
-                        ProfileImageButton(destination:
-                                            allowProfileNavigation ? EmptyView() : nil)
+                        ProfileImageButton(destination: allowProfileNavigation ? UserProfileView() : nil)
                     }
                 }
             }
@@ -31,8 +30,7 @@ struct Header: View {
 
 struct Header_Previews: PreviewProvider {
     static var previews: some View {
+        UserDefaultsService.shared.isLoggedIn = true
         return Header(allowProfileNavigation: true)
-            .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
-
     }
 }

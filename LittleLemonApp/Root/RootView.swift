@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 import SwiftUI
 
 struct RootView: View {
@@ -18,8 +17,15 @@ struct RootView: View {
             if userDefaultsService.isLoggedIn {
                 MainView()
             } else {
-                OnboardingView()
+                OnboardingContainerView()
             }
         }
+    }
+}
+
+struct RootView_Previews: PreviewProvider {
+    static var previews: some View {
+        RootView()
+            .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
     }
 }

@@ -21,3 +21,8 @@ struct SectionTitleView: View {
     }
 }
 
+struct SectionTitleView_Previews: PreviewProvider {
+    static var previews: some View {
+        SectionTitleView(title: "I am Section title")
+    }
+}

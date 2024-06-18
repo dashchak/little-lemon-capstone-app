@@ -1,7 +1,9 @@
 //
-// DishView.swift
-
-
+//  FoodItemView.swift
+//  LittleLemonApp
+//
+//  Created by Roman Dashchakivskyi on 16.06.2024.
+//
 
 import SwiftUI
 
@@ -45,7 +47,7 @@ struct FoodItemView: View {
 }
 
 
-struct DishView_Previews: PreviewProvider {
+struct FoodItemView_Previews: PreviewProvider {
     static let context = PersistenceController.shared.container.viewContext
     static var previews: some View {
         FoodItemView(PersistenceController.mockedDish())

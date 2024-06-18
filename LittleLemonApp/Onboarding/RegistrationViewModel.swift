@@ -1,30 +1,31 @@
 //
-//  OnboardingViewModel.swift
+//  RegistrationViewModel.swift
 //  LittleLemonApp
 //
 //  Created by Roman Dashchakivskyi on 16.06.2024.
 //
 
+
 import SwiftUI
 import Combine
 
-class OnboardingViewModel: ObservableObject {
+class RegistrationViewModel: ObservableObject {
     @Published var isFormValid = false
     @Published var showRegistrationError: Bool = false
     
-    @Published var name: String = ""
+    @Published var firstName: String = ""
     @Published var lastName: String = ""
     @Published var email: String = ""
 
 
     init () {
-        setubBindings()
+        setupBindings()
     }
 
-    private func setubBindings() {
-        Publishers.CombineLatest3($name, $lastName, $email)
-            .map { [unowned self] name, lastName, email in
-                !name.isEmpty && !lastName.isEmpty && isValid(email)
+    private func setupBindings() {
+        Publishers.CombineLatest3($firstName, $lastName, $email)
+            .map { [unowned self] firstName, lastName, email in
+                !firstName.isEmpty && !lastName.isEmpty && isValid(email)
             }
             .assign(to: &$isFormValid)
     }
@@ -39,6 +40,9 @@ class OnboardingViewModel: ObservableObject {
         if isFormValid {
             showRegistrationError = false
             UserDefaultsService.shared.isLoggedIn = true
+            UserDefaultsService.shared.user = User(firstName: firstName,
+                                                   lastName: lastName,
+                                                   email: email)
         } else {
             showRegistrationError = true
         }

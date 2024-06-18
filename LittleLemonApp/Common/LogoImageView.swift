@@ -15,3 +15,9 @@ struct LogoImageView: View {
             .frame(maxHeight: 50)
     }
 }
+
+struct LogoImageView_Previews: PreviewProvider {
+    static var previews: some View {
+        LogoImageView()
+    }
+}

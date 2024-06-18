@@ -1,6 +1,5 @@
 import Foundation
 import CoreData
-import Combine
 
 
 @MainActor
@@ -9,10 +8,9 @@ class FoodMenuListModel: ObservableObject {
     @Published var selectedCategories: [Category] = [] { didSet { updateFetchResults() } }
     @Published var filterPredicate = NSPredicate(value: true)
 
-    private let apiService: APIServiceProtocol
-    private var cancellables = Set<AnyCancellable>()
+    private let apiService: LittleLemonAPIService
 
-    init(apiService: APIServiceProtocol = APIService.shared) {
+    init(apiService: LittleLemonAPIService = LittleLemonAPIService.shared) {
         self.apiService = apiService
     }
 

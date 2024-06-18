@@ -1,33 +1,31 @@
 //
-//  Onboarding.swift
+//  RegistrationView.swift
 //  LittleLemonApp
 //
 //  Created by Roman Dashchakivskyi on 16.06.2024.
 //
+
 import SwiftUI
 
-struct OnboardingView: View {
-    @StateObject private var viewModel = OnboardingViewModel()
+struct RegistrationView: View {
+    @ObservedObject var viewModel: RegistrationViewModel
+    @State var showError = false
 
     var body: some View {
         NavigationStack {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
                     Header()
-                    Hero()
-                        .padding()
-                        .background(Color.primaryColor1)
-                        .frame(maxWidth: .infinity, maxHeight: 240)
                     VStack {
                         Text("First name *")
                             .onboardingTextStyle()
-                        TextField("First Name", text: $viewModel.name)
+                        TextField("First Name", text: $viewModel.firstName)
                         Text("Last name *")
                             .onboardingTextStyle()
                         TextField("Last Name", text: $viewModel.lastName)
-                        Text("E-mail *")
+                        Text("Email *")
                             .onboardingTextStyle()
-                        TextField("E-mail", text: $viewModel.email)
+                        TextField("Email", text: $viewModel.email)
                             .keyboardType(.emailAddress)
                     }
                     .textFieldStyle(.roundedBorder)
@@ -35,16 +33,10 @@ struct OnboardingView: View {
                     .padding()
 
                     if viewModel.showRegistrationError {
-                        Text("Please fill in all fields correctly")
+                        Text("Please fill in all fields correctly. And try again")
                             .foregroundColor(.red)
                             .padding(.bottom)
                     }
-
-                    Button("Register") {
-                        viewModel.registerUser()
-                    }
-                    .disabled(!viewModel.isFormValid)
-                    .buttonStyle(ButtonStyleYellowColorWide())
 
                     Spacer()
                 }
@@ -56,7 +48,6 @@ struct OnboardingView: View {
 
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        return OnboardingView()
-            .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+        return RegistrationView(viewModel: RegistrationViewModel())
     }
 }

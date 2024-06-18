@@ -21,3 +21,9 @@ struct ProfileImageButton<Content: View>: View {
         }
     }
 }
+
+struct ProfileImageButton_Previews: PreviewProvider {
+    static var previews: some View {
+        ProfileImageButton(destination: Text("Hello"))
+    }
+}

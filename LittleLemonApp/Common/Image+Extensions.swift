@@ -26,5 +26,4 @@ extension Image {
             .clipShape(Rectangle())
             .cornerRadius(16)
     }
-
 }

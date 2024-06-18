@@ -1,3 +1,10 @@
+//
+//  FoodMenuList.swift
+//  LittleLemonApp
+//
+//  Created by Roman Dashchakivskyi on 16.06.2024.
+//
+
 import SwiftUI
 import CoreData
 

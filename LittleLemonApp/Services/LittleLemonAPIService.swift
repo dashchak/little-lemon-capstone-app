@@ -7,12 +7,12 @@
 
 import Foundation
 
-protocol APIServiceProtocol {
+protocol LittleLemonAPIServiceProtocol {
     func fetchMenu() async throws -> Menu
 }
 
-class APIService: APIServiceProtocol {
-    static let shared = APIService()
+class LittleLemonAPIService: LittleLemonAPIServiceProtocol {
+    static let shared = LittleLemonAPIService()
     private let session: URLSession = .shared
 
     func fetchMenu() async throws -> Menu {

@@ -81,7 +81,11 @@ extension Font {
     static func subTitleFont() -> Font {
         return Font.custom("Markazi Text", size: 30)
     }
-    
+
+    static func welcomeFont() -> Font {
+        return Font.custom("Markazi Text", size: 24)
+    }
+
     static func leadText() -> Font {
         return Font.custom("Karla", size: 16).weight(.medium)
     }
@@ -91,7 +95,7 @@ extension Font {
     }
     
     static func sectionTitle() -> Font {
-        return Font.custom("Karla", size: 18).weight(.black)
+        return Font.custom("Markazi Text", size: 18).weight(.medium)
     }
     
     static func sectionCategories() -> Font {

@@ -8,7 +8,6 @@
 import Foundation
 
 import SwiftUI
-import Combine
 
 class CategoriesViewModel: ObservableObject {
     @Published var categories: [Category] = [
