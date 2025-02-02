@@ -3,11 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0890C40C2D4F5C7C00B648E8 /* VungleInterstitialManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0890C40B2D4F5C7C00B648E8 /* VungleInterstitialManagerTests.swift */; };
+		0890C40E2D4F5E6000B648E8 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0890C40D2D4F5E6000B648E8 /* UIApplication+Extensions.swift */; };
 		08D2E3F62D4DD04F0005D672 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 08D2E3F52D4DD04F0005D672 /* SDWebImageSwiftUI */; };
+		08D2E3FD2D4EF2910005D672 /* VungleAdsSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 08D2E3FC2D4EF2910005D672 /* VungleAdsSDK */; };
 		0961EFBA2C1F440B002FC40B /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0961EFB92C1F440B002FC40B /* Category.swift */; };
 		0961EFBC2C1F4421002FC40B /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0961EFBB2C1F4421002FC40B /* CategoriesViewModel.swift */; };
 		0961EFBE2C1F4433002FC40B /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0961EFBD2C1F4433002FC40B /* CategoriesView.swift */; };
@@ -61,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0890C40B2D4F5C7C00B648E8 /* VungleInterstitialManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VungleInterstitialManagerTests.swift; sourceTree = "<group>"; };
+		0890C40D2D4F5E6000B648E8 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		0961EFB92C1F440B002FC40B /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		0961EFBB2C1F4421002FC40B /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
 		0961EFBD2C1F4433002FC40B /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
@@ -105,12 +110,17 @@
 		09F96E0E2C1EF81900DD6107 /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		0890C3F72D4EFC6000B648E8 /* Vungle */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Vungle; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		09E710FD2C1DE7D700B50546 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				08D2E3F62D4DD04F0005D672 /* SDWebImageSwiftUI in Frameworks */,
+				08D2E3FD2D4EF2910005D672 /* VungleAdsSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,6 +198,7 @@
 		09E711022C1DE7D700B50546 /* LittleLemonApp */ = {
 			isa = PBXGroup;
 			children = (
+				0890C3F72D4EFC6000B648E8 /* Vungle */,
 				0961EFC32C1F4B16002FC40B /* Category */,
 				09F96DF12C1E060A00DD6107 /* Common */,
 				09F96DCB2C1E038000DD6107 /* CoreData */,
@@ -205,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				09E711192C1DE7D800B50546 /* UserProfileViewModelTests.swift */,
+				0890C40B2D4F5C7C00B648E8 /* VungleInterstitialManagerTests.swift */,
 				09689F6C2C21140B00BAC13A /* UserDefaultsServiceTests.swift */,
 			);
 			path = LittleLemonAppTests;
@@ -288,6 +300,7 @@
 				09F96E0C2C1EF1E400DD6107 /* Image+Extensions.swift */,
 				09F96E0A2C1EEB6A00DD6107 /* LogoImageView.swift */,
 				09689F5C2C20F84600BAC13A /* User.swift */,
+				0890C40D2D4F5E6000B648E8 /* UIApplication+Extensions.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -306,6 +319,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				0890C3F72D4EFC6000B648E8 /* Vungle */,
 			);
 			name = LittleLemonApp;
 			productName = LittleLemonApp;
@@ -360,6 +376,7 @@
 			mainGroup = 09E710F72C1DE7D700B50546;
 			packageReferences = (
 				08D2E3F42D4DD04F0005D672 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				08D2E3FB2D4EF2910005D672 /* XCRemoteSwiftPackageReference "VungleAdsSDK-SwiftPackageManager" */,
 			);
 			productRefGroup = 09E711012C1DE7D700B50546 /* Products */;
 			projectDirPath = "";
@@ -411,6 +428,7 @@
 				09F96DC82C1DF3C800DD6107 /* LittleLemonAPIService.swift in Sources */,
 				09F96DF92C1EC63800DD6107 /* Header.swift in Sources */,
 				0961EFBE2C1F4433002FC40B /* CategoriesView.swift in Sources */,
+				0890C40E2D4F5E6000B648E8 /* UIApplication+Extensions.swift in Sources */,
 				09689F5D2C20F84600BAC13A /* User.swift in Sources */,
 				09A44FE52C1F1F7D004E47F9 /* Dish+CoreDataProperties.swift in Sources */,
 				09F96DFF2C1EC6C000DD6107 /* Hero.swift in Sources */,
@@ -438,6 +456,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0890C40C2D4F5C7C00B648E8 /* VungleInterstitialManagerTests.swift in Sources */,
 				09689F6D2C21140B00BAC13A /* UserDefaultsServiceTests.swift in Sources */,
 				09E7111A2C1DE7D800B50546 /* UserProfileViewModelTests.swift in Sources */,
 			);
@@ -582,6 +601,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LittleLemonApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -609,6 +629,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LittleLemonApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -706,6 +727,14 @@
 				minimumVersion = 3.1.3;
 			};
 		};
+		08D2E3FB2D4EF2910005D672 /* XCRemoteSwiftPackageReference "VungleAdsSDK-SwiftPackageManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Vungle/VungleAdsSDK-SwiftPackageManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.4.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -713,6 +742,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 08D2E3F42D4DD04F0005D672 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
+		};
+		08D2E3FC2D4EF2910005D672 /* VungleAdsSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 08D2E3FB2D4EF2910005D672 /* XCRemoteSwiftPackageReference "VungleAdsSDK-SwiftPackageManager" */;
+			productName = VungleAdsSDK;
 		};
 /* End XCSwiftPackageProductDependency section */
 
