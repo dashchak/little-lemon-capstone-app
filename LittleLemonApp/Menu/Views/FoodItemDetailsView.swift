@@ -8,6 +8,7 @@
 import Foundation
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct FoodItemDetailsView: View {
 
@@ -18,7 +19,7 @@ struct FoodItemDetailsView: View {
     var body: some View {
         VStack {
             Header()
-            AsyncImage(url: URL(string: dish.image ?? "")) { image in
+            WebImage(url: URL(string: dish.image ?? "")) { image in
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fit)

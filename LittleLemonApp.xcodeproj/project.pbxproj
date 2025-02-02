@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08D2E3F62D4DD04F0005D672 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 08D2E3F52D4DD04F0005D672 /* SDWebImageSwiftUI */; };
 		0961EFBA2C1F440B002FC40B /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0961EFB92C1F440B002FC40B /* Category.swift */; };
 		0961EFBC2C1F4421002FC40B /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0961EFBB2C1F4421002FC40B /* CategoriesViewModel.swift */; };
 		0961EFBE2C1F4433002FC40B /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0961EFBD2C1F4433002FC40B /* CategoriesView.swift */; };
@@ -109,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08D2E3F62D4DD04F0005D672 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +358,9 @@
 				Base,
 			);
 			mainGroup = 09E710F72C1DE7D700B50546;
+			packageReferences = (
+				08D2E3F42D4DD04F0005D672 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = 09E711012C1DE7D700B50546 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -691,6 +696,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		08D2E3F42D4DD04F0005D672 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		08D2E3F52D4DD04F0005D672 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 08D2E3F42D4DD04F0005D672 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		09689F692C210DCE00BAC13A /* LittleLemonApp.xcdatamodeld */ = {

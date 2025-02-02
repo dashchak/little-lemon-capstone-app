@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 
 struct FoodItemView: View {
@@ -31,7 +32,7 @@ struct FoodItemView: View {
                     .monospaced()
             }
             Spacer()
-            AsyncImage(url: URL(string: dish.image ?? "")) { image in
+            WebImage(url: URL(string: dish.image ?? "")) { image in
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
